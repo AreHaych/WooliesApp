@@ -2,18 +2,20 @@
 
 //items grouped in arrays according to their aisle number
 let aisle1 = ['Bread', 'Cereal', 'Cakes?', 'Crumpets', 'Health care (vitamins, foods)', 'Honey', 'Nutella', 'High Quality Peanutbutter',
-'Specialty Jams', 'Muffins', 'Muesli and oats'];
+'Specialty Jams', 'Muffins', 'Muesli and oats', 'Fruit juice'];
 const aisle2 = ['Biscuits', 'Condensed milk', 'Coffee'];
-const aisle3 = ['Batteries', 'Cards and wrap', 'Chips', 'Chocolate', 'Confectionary' ];
-const aisle4 = ['Cordial'];
-const aisle5 = ['Asian food', 'Bread crumbs', 'Canned fish', 'Canned vegetables', 'Cook in sauces', 'Cooking oil'];
+const aisle3 = ['Batteries', 'Cards and wrap', 'Chips', 'Chocolate', 'Confectionary','Electrical goods (extension cords)',];
+const aisle4 = ['Cordial', 'Energy drinks'];
+const aisle5 = ['Asian food', 'Bread crumbs', 'Canned fish', 'Canned vegetables', 'Cook in sauces', 'Cooking oil', 'English foods'];
 const aisle6 = ['Aluminium foil', 'Kitchen appliances', 'Baked beans and spaghetti', 'Bins', 'Bread mix', 'Cooking chocolate', 'Cakemix',
-                'Canned fruit', 'Canned meats (ham, chicken)'];
-const aisle7 = ['Bandaids', 'Baby lotion'];
+                'Canned fruit', 'Canned meats (ham, chicken)', 'Crockery (plates, bowls)', 'Custard', 'Cuttlery', 'Dried fruits & nuts', 
+                'Desserts', 'Flour', 'Plastic Wrap/Lunch bags', 'Glassware (tumblers)'];
+const aisle7 = ['Bandaids', 'Baby lotion', 'Cosmetics (Nail polish, mascara)', 'Cotton wool balls', 'Deodorant'];
 const aisle8 = ['Baby needs (wipes, bibs, food)', 'Bathroom towels', 'BBQ needs (Heatbeads/foil trays)', 'Brushes and brooms', 'Buttons',
-                'Chlorine', 'Coathangers'];
-const aisle9 = ['Air freshener', 'Bird seed', 'Bleach', 'Cat food', 'Cat litter', 'Cleaners (Kitchen, Bathroom)',];
-const aisle10 = [];
+                'Chlorine', 'Coathangers', 'Cotton thread', 'Firelighters', 'Garbage bags', 'Garden needs'];
+const aisle9 = ['Air freshener', 'Bird seed', 'Bleach', 'Cat food', 'Cat litter', 'Cleaners (Kitchen, Bathroom)', 'Dishwashing detergents',
+                'Disinfectants', 'Dog foog', 'Fabric care (softeners)'];
+const aisle10 = ['Eggs'];
 const aisle11 = [];
 // const aisle54 = [];
 //cordial is the latest item put in
