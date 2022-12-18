@@ -1,14 +1,11 @@
 "use strict";
 
 let itemObjectArray = []; //array of objects which represnt an item and its aisle number location
-let incorrectItemArray = []; //contains the objects of items that were incorrectly answered when prompted
-let points = 0; //number variable that increases when they correctly answer questions prompted
 
 //MAP KEY/VALUE PAIRS THAT REPRESENT AN AISLE NUMBER AND AN ITEM NAME
 const aislesAndItemsMap = 
 [
-    [0, 'test for 0'], [1, 'Bread'], [1, 'Cereal'], [1,'Cakes?'], [1, 'Crumpets'], [1, 'Health care (vitamins, foods)'], [1, 'Honey'], [1, 'Nutella'], [1, 'High Quality Peanutbutter'],
-    [1, 'Specialty Jams'], [1, 'Muffins'], [1, 'Muesli and oats'], [1, 'Fruit juice'], 
+    [0, 'test for 0'], [1, 'Bread'], [1, 'Cereal'], [1,'Cakes?'], [1, 'Crumpets'], [1, 'Health care (vitamins, foods)'], [1, 'Honey'], [1, 'Nutella'], [1, 'High Quality Peanutbutter'],[1, 'Specialty Jams'], [1, 'Muffins'], [1, 'Muesli and oats'], 
     [2, 'Biscuits'], [2, 'Condensed milk'], [2, 'Coffee'], 
     [3, 'Batteries'], [3, 'Cards and wrap'], [3, 'Chips'], [3, 'Chocolate'], [3, 'Confectionary'],[3, 'Electrical goods (extension cords)'], 
     [4, 'Cordial'], [4, 'Energy drinks'], 
@@ -46,55 +43,92 @@ function makeItemObject([aisle, name]) {
     )
 }
 
-console.log(itemObjectArray);
-
-
-
+/**
+ * The getRandomNumber function
+ * This function is used to provide a random integer to use as an index to retrieve objects from an array
+ * These random objects are what will be used to test a users knowledge on item's aisle location
+ * @returns A random number between 0 and length of the itemObjectArray
+ */
 function getRandomNumber() {
-    let randomNumber = Math.floor(Math.random()*itemObjectArray.length); //issue
-    return randomNumber
+    return Math.floor(Math.random() * itemObjectArray.length) + 1; //issue   
 }
+ 
 
-function evaluateUserInput() {
-    while(points < itemObjectArray.length) {
-        let currentItemIndex = getRandomNumber();
-        let currentItem = itemObjectArray[currentItemIndex];
-        let response = window.prompt(`What aisle is ${currentItem.itemName} located in?`);
-        if(response) {
-            if(response == currentItem.itemAisle) {
-                //adds one point to the points variable
-                points++;
-                console.log('Correct')
-                itemObjectArray.splice(currentItemIndex, 1)[0];
-                console.log('Deleted ' + currentItem.itemName)
-            } else {
-                //adds the current item to incorrect item array (to show as feedback to user later)
-                // incorrectItemArray.push(currentItem);
-                console.log(`Incorrect, ${currentItem.ItemName} is located in aisle ${currentItem.itemAisle}`)
-                incorrectItemArray.push(itemObjectArray.splice(currentItemIndex, 1))[0];
-                console.log('Deleted ' + currentItem.itemName)
-            }
+let incorrectItemArray = []; //contains the objects of items that were incorrectly answered when prompted
+let points = 0; //number variable that increases when they correctly answer questions prompted
+let currentItemIndex = getRandomNumber();
+let currentItem = itemObjectArray[currentItemIndex]; //get a random object from itemObjectArray
+
+
+//DOM elements that will be used
+let pointsEle = document.getElementById('points').innerHTML = `Points: ${points}`;
+let currentItemMessageEle = document.getElementById('current-item-message').innerHTML = `What aisle is ${currentItem.itemName} located?`;
+let userInput = document.getElementById('user-input');
+let userFeedbackEle = document.getElementById('user-feedback');
+
+function userInputCheck() {
+    if(userInput.value) {
+        if(userInput.value == currentItem.itemAisle) {
+            points++;
+            userFeedbackEle.innerText = 'Correct';
+            itemObjectArray.splice(currentItemIndex, 1)[0];
+            resetValues();
+        } else {
+            userFeedbackEle.innerText = `Incorrect, ${currentItem.itemName} is located in aisle ${currentItem.itemAisle}`;
+            userFeedbackEle.style = 'color: red';
+            itemObjectArray.splice(currentItemIndex, 1)[0];
+            incorrectItemArray.push(itemObjectArray.splice(currentItemIndex, 1))[0];
+            resetValues();
         }
-    }   
+    } else {
+        console.log('You need to provide a value.')
+    }
 }
 
+function resetValues() {
+    currentItemIndex = getRandomNumber();
+    currentItem = itemObjectArray[currentItemIndex];
+    currentItemMessageEle = document.getElementById('current-item-message').innerHTML = `What aisle is ${currentItem.itemName} located?`;
+    pointsEle = document.getElementById('points').innerHTML = `Points: ${points}`;
+    userInput.value = '';
+}
+
+
+// function evaluateUserInput() {
+//     while(points < itemObjectArray.length) {
+//         currentItemIndex = getRandomNumber();
+//         currentItem = itemObjectArray[currentItemIndex];
+//         // let response = window.prompt(`What aisle is ${currentItem.itemName} located in?`);
+//         document.getElementById('current-item-message').innerText = `What aisle is ${currentItem.itemName} located in?`;
+//         let response = document.getElementById('user-input').value;     
+//         if(response) {
+//             if(response == currentItem.itemAisle) {
+//                 //adds one point to the points variable
+//                 points++;
+//                 console.log('Correct')
+//                 itemObjectArray.splice(currentItemIndex, 1)[0];
+//                 console.log('Deleted ' + currentItem.itemName)
+//             } else {
+//                 //adds the current item to incorrect item array (to show as feedback to user later)
+//                 // incorrectItemArray.push(currentItem);
+//                 console.log(`Incorrect, ${currentItem.ItemName} is located in aisle ${currentItem.itemAisle}`)
+//                 incorrectItemArray.push(itemObjectArray.splice(currentItemIndex, 1))[0];
+//                 console.log('Deleted ' + currentItem.itemName)
+//             }
+//         }
+//     }   
+// }
 
 /**
  * The promptLoop function
  * This function starts a loop which will continuously prompt the user
- * The user input will then be checked to see if they provided a correct answer to the question prompted
- * If correct, the user will gain a point
- * If incorrect, no point will be gained
- * Regardless of right/wrong answer, the object will be deleted from the pool of questions,
- * and text will be printed to the console as feedback
- */
-function promptLoop() {
-    evaluateUserInput();
-    // console.log(incorrectItemArray)
-    console.log(itemObjectArray)    
-}
+ * The user input will then be checked with the evaluateUserInput function
+//  */
+// function promptLoop() {
+//     evaluateUserInput();
+// }
 
-promptLoop();
+// promptLoop();
 
 
 

@@ -5,12 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+
+    
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <title>WooliesWebApp</title>
 </head>
 <body>
-    <h1>Woolworths Item Location Tester</h1>
+    <banner>
+        <h1>Woolworths Item Location Tester</h1>
+        <img src="Woolworths-logo.png" height="200px">
+    </banner>
+
+    <label id='points'>Points: </label>
+    <h3 id='user-feedback'></h3>
     <h2>Type in the aisle number of the item shown to get a point</h2>
+    <h2 id='current-item-message'></h2>
+
+    <div id='current-item-image'></div>
+    <input type="text" id='user-input' placeholder='Aisle number'>
+    <input type="button" value='Okay' onclick='userInputCheck()'>
+    <script src="script.js"></script>
 </body>
 </html>

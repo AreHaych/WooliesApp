@@ -1,2 +1,31 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+img, picture, svg, video {
+  display: block;
+  max-width: 100%;
+}
+
+input, textarea, button, select {
+  font: inherit;
+}
+
 body {
+  font-family: 'Inter', 'sans-serif';
+  width: 960px;
+  margin: 0 auto;
+}
+
+banner {
+display: flex;
+justify-content: space-evenly;
+background-color: rgb(236, 247, 226);
+  
+}
+
+banner h1 {
+  font-weight: 600;
+  font-size: 33px;
+  align-self: center;
 }
