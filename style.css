@@ -1,5 +1,7 @@
 *, *::before, *::after {
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 img, picture, svg, video {
@@ -17,15 +19,77 @@ body {
   margin: 0 auto;
 }
 
-banner {
+/* banner {
 display: flex;
-justify-content: space-evenly;
-background-color: rgb(236, 247, 226);
+/* justify-content: space-evenly; */
+/* background-color: rgb(236, 247, 226);
   
+} */
+
+.banner {
+  margin-top: 30px;
+  background-color: rgb(236, 247, 226)
 }
 
-banner h1 {
-  font-weight: 600;
-  font-size: 33px;
-  align-self: center;
+.banner-main-header {
+  font-size: 50px;
+  text-align: center;
+}
+
+.banner-sub-header {
+  font-size: 25px;
+  margin-top: 8px;
+  text-align: center;
+}
+
+.banner img {
+  margin-left: 330px;
+}
+
+.points {
+  margin-top: 10px; 
+  /* margin-bottom: 10px; */ 
+  font-size: 17px;
+  /* margin-left: 39.5%; */
+}
+
+.user-input {
+  /* display: block;
+  margin: auto; */
+  margin-top: 50px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  width: 200px;
+  text-align: center;
+  font-size: 30px;
+}
+
+.button {
+  /* display: block;
+  margin: auto; */
+  margin-top: 10px;
+  padding-left: 80px;
+  padding-right: 80px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+}
+
+.item-and-input {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.current-item-message {
+  padding-top: 15px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.flex-container {
+  /* background-color: red; */
+  display: flex;
+  margin-top: 20px;
+  /* flex-direction: row; */
+  /* gap: 20px; */
 }
